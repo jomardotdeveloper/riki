@@ -15,8 +15,8 @@
                         <label for="delivery_address" class="control-label">Delivery Address</label>
                         <textarea name="delivery_address" id="delivery_address" class="form-control form-control-sm rounded-0" rows="4"><?= $_settings->userdata('address') ?></textarea>
                     </div>
-                    <label for="delivery_address" class="control-label">Attach Payment</label> <br />
-                    <input type="file" name="attached_payment" id="attached_payment" />
+                    <!-- <label for="delivery_address" class="control-label">Attach Payment</label> <br />
+                    <input type="file" name="attached_payment" id="attached_payment" /> -->
 
                     <div class="form-group text-right">
                         <button class="btn btn-flat btn-primary">Place Order</button>

@@ -25,8 +25,11 @@
                     right: 'month,agendaWeek,agendaDay'
                 },
                 events: <?php
+                        $dbname = "rikimotor";
+                        $username = "root";
+                        $password = "";
                         //load.php
-                        $connect = new PDO('mysql:host=localhost;dbname=u295175986_rikimotorworkz', 'u295175986_riki', 'Rikimotorworkz123');
+                        $connect = new PDO('mysql:host=localhost;dbname=' . $dbname, $username, $password);
 
                         $data = array();
 

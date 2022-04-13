@@ -68,7 +68,8 @@ $date_end = isset($_GET['date_end']) ? $_GET['date_end'] :  date("Y-m-d");
                     $qry = $conn->query("SELECT o.*,CONCAT(c.lastname,', ',c.firstname,' ',c.middlename) as fullname from order_list o inner join client_list c on o.client_id = c.id {$where} order by unix_timestamp(o.date_created) desc");
                     $total = 0;
                     while ($row = $qry->fetch_assoc()) :
-                        $total += $row['total_amount'];
+                        if ($row["status"] != 5)
+                            $total += $row['total_amount'];
                     ?>
                         <tr>
                             <td class="text-center"><?php echo $i++ ?></td>

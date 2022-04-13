@@ -600,30 +600,30 @@ class Master extends DBConnection
 			$resp['msg'] = " Order has failed to place.";
 			$resp['error'] = $this->conn->error;
 		}
-		if ($_FILES["attached_payment"]['size'] != 0) {
-			$target_dir = "../uploads/payments/";
-			$target_file = $target_dir . basename($_FILES["attached_payment"]["name"]);
-			$uploadOk = 1;
-			$imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-			$check = getimagesize($_FILES["attached_payment"]["tmp_name"]);
-			$success = False;
-			if ($check !== false) {
-				$uploadOk = 1;
-			} else {
-				$uploadOk = 0;
-			}
-			if ($uploadOk != 0) {
-				move_uploaded_file($_FILES["attached_payment"]["tmp_name"], $target_file);
-				$id = $oid;
-				$sql = "UPDATE order_list SET attached_payment='$target_file' WHERE id=$id";
-				$this->conn->query($sql);
-				$success = true;
-			}
-			if (!$success) {
-				$resp['status'] = 'failed';
-				$resp['msg'] = " Order has failed to place.";
-			}
-		}
+		// if ($_FILES["attached_payment"]['size'] != 0) {
+		// 	$target_dir = "../uploads/payments/";
+		// 	$target_file = $target_dir . basename($_FILES["attached_payment"]["name"]);
+		// 	$uploadOk = 1;
+		// 	$imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+		// 	$check = getimagesize($_FILES["attached_payment"]["tmp_name"]);
+		// 	$success = False;
+		// 	if ($check !== false) {
+		// 		$uploadOk = 1;
+		// 	} else {
+		// 		$uploadOk = 0;
+		// 	}
+		// 	if ($uploadOk != 0) {
+		// 		move_uploaded_file($_FILES["attached_payment"]["tmp_name"], $target_file);
+		// 		$id = $oid;
+		// 		$sql = "UPDATE order_list SET attached_payment='$target_file' WHERE id=$id";
+		// 		$this->conn->query($sql);
+		// 		$success = true;
+		// 	}
+		// 	if (!$success) {
+		// 		$resp['status'] = 'failed';
+		// 		$resp['msg'] = " Order has failed to place.";
+		// 	}
+		// }
 
 		if ($resp['status'] == 'success')
 			$this->settings->set_flashdata('success', $resp['msg']);
